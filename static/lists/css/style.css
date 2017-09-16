@@ -1,0 +1,83 @@
+/* UTILITIES */
+
+/*** custom checkboxes ***/
+
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+input[type=checkbox]:checked + label {text-decoration: line-through; color: rgba(255,255,255,0.6);}
+
+/* END */
+
+body {
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	background-image: url(../background.jpg);
+	background-attachment: fixed;
+	overflow-y: hidden;	
+}
+
+.action {
+	color: white;
+	flex: none;
+	width: 100%;
+}
+
+.super-nice {
+	font-size: 18px;
+	margin-top: 20px;
+	padding: 7px;
+	height: auto;
+}
+
+.logo {
+	width: 100px;
+	margin-bottom: 50px;
+}
+
+.special-container {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+  	height: 100%;
+}
+
+.list-title {
+	color: white;
+	font-size: 36px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	display: block;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 100%;
+}
+
+#id_list_table {
+	color: white;
+}
+
+#id_list_table tr td {
+	font-size: 25px;
+}
+
+#id_list_table tr td label:before {
+	vertical-align: middle;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+.list-container {
+	max-height: 70%;
+	overflow-y: auto;
+}

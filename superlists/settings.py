@@ -25,7 +25,7 @@ SECRET_KEY = '8d-1&#11bqf!^0+fkok0v@cw@essoo7x&o7l_blia&q*98&4zr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["prestxyz.herokuapp.com"]
+ALLOWED_HOSTS = ["prestxyz.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -63,6 +63,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'builtins': [
+                'django.contrib.staticfiles.templatetags.staticfiles',
             ],
         },
     },
@@ -119,5 +122,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
+STATICFILES_DIRS = ( os.path.join('static'), )

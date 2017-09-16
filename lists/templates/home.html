@@ -1,12 +1,21 @@
-<html>
-    <head>
-        <title>To-Do Lists</title>
-    </head>
-    <body>
-        <h1>Start a new To-Do list</h1>
-        <form method="POST" action = "/lists/new">
-            <input name = "item_text" id = "id_new_item" placeholder="Enter a to-do item"/>
-            {% csrf_token %}
-        </form>
+{% include 'head.html' %}
+        <div class = "row" style = 'height: 100%;''>
+            <div class="col-md-6 col-md-offset-3" style = "text-align: center;">
+                <div class = "special-container">
+            <div class = "action">
+            <img src='{% static "logo.png" %}' class = 'logo' />
+            <h1>Get things done</h1>
+            <form method="POST" action = "/lists/new">
+                <input name = "item_text" class = "form-control super-nice" autofocus id = "id_new_item" placeholder="What's on your to-do list for today?"/>
+                {% csrf_token %}
+            </form>
+            <p>Prest.xyz is a lightning-fast open-source to-do list app.</p>
+        </div>
+    </div>
+        </div> <!-- .col -->
+        </div> <!-- .row -->
+    </div> <!-- .content-fluid -->
+
+    
     </body>
 </html>

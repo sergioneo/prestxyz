@@ -1,17 +1,35 @@
-<html>
-    <head>
-        <title>To-Do Lists</title>
-    </head>
-    <body>
-        <h1>Your To-Do list</h1>
+{% include 'head.html' %}
+<div class = 'row'>
+    <div class="col-md-6 col-md-offset-3" style="padding-top: 20px">
+        <input class = "list-title" value = "{{ list.title }}" />
         <form method="POST" action = "/lists/{{ list.id }}/add_item">
-            <input name = "item_text" id = "id_new_item" placeholder="Enter a to-do item"/>
+            <input name = "item_text" autofocus class = "form-control super-nice" id = "id_new_item" placeholder="Enter a to-do item"/>
             {% csrf_token %}
         </form>
+        <div class = "list-container">
         <table id = "id_list_table">
             {% for item in list.item_set.all %}
-                <tr><td>{{forloop.counter}}: {{ item.text }}</td></tr>
+                <tr><td><input class = "item_check" id="box{{item.id}}" item-id="{{item.id}}" type="checkbox" {% if item.checked %}checked{% endif %} /><label for="box{{item.id}}">{{ item.text }}</label></td></tr>
             {% endfor %}
         </table>
+    </div>
+    </div> <!-- .row -->
+    </div> <!-- .content-fluid -->
+    <script type="text/javascript">
+        
+        $(function(){
+            $(".item_check").change(function(){
+                var item_id = $(this).attr("item-id");
+                var checked = this.checked;
+                $.post( "items/"+item_id+"/check", { checked: checked,csrfmiddlewaretoken: '{{ csrf_token }}'} );
+            });
+
+            $(".list-title").keyup(function(){
+                var new_title = $(this).val();
+                $.post( "update_title", { title: new_title,csrfmiddlewaretoken: '{{ csrf_token }}'} );
+            })
+        });
+
+    </script>
     </body>
 </html>
