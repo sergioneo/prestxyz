@@ -25,7 +25,7 @@ SECRET_KEY = '8d-1&#11bqf!^0+fkok0v@cw@essoo7x&o7l_blia&q*98&4zr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["prestxyz.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["prestxyz.herokuapp.com", "localhost", "www.prest.xyz"]
 
 
 # Application definition
