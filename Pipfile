@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+[packages]
+
+dj-database-url = "==0.4.2"
+django = "==1.11.4"
+gunicorn = "==19.7.1"
+pytz = "==2017.2"
+selenium = "==3.5.0"
+psycopg2 = "==2.5.4"
+whitenoise = "*"
+
+
