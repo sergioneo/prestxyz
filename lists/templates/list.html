@@ -1,20 +1,25 @@
 {% include 'head.html' %}
 <div class = 'row'>
-    <div class="col-md-6 col-md-offset-3" style="padding-top: 20px">
+    <div class="col-md-6 col-md-offset-3 card central-card" style="padding-top: 20px">
+        <img src='{% static "logo.png" %}' class = 'logo_mobile' />
         <input class = "list-title" value = "{{ list.title }}" />
-        <form method="POST" action = "/lists/{{ list.id }}/add_item">
+        <div class = "list-container">
+            <table id = "id_list_table">
+                {% for item in list.item_set.all %}
+                    <tr><td><input class = "item_check" id="box{{item.id}}" item-id="{{item.id}}" type="checkbox" {% if item.checked %}checked{% endif %} /><label for="box{{item.id}}">{{ item.text }}</label></td></tr>
+                {% endfor %}
+            </table>
+        </div>
+        <form method="POST" action = "/lists/{{ list.id }}/add_item" class="add-desktop">
             <input name = "item_text" autofocus class = "form-control super-nice" id = "id_new_item" placeholder="Enter a to-do item"/>
             {% csrf_token %}
         </form>
-        <div class = "list-container">
-        <table id = "id_list_table">
-            {% for item in list.item_set.all %}
-                <tr><td><input class = "item_check" id="box{{item.id}}" item-id="{{item.id}}" type="checkbox" {% if item.checked %}checked{% endif %} /><label for="box{{item.id}}">{{ item.text }}</label></td></tr>
-            {% endfor %}
-        </table>
-    </div>
     </div> <!-- .row -->
     </div> <!-- .content-fluid -->
+    <form method="POST" action = "/lists/{{ list.id }}/add_item" class="add-mobile">
+        <input name = "item_text" autofocus class = "form-control mobile-form" placeholder="Enter a to-do item"/>
+        {% csrf_token %}
+    </form>
     <script type="text/javascript">
         
         $(function(){

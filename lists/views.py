@@ -2,13 +2,15 @@ from django.shortcuts import render, redirect
 from lists.models import Item, List
 from django.http import HttpResponse, HttpResponseBadRequest
 
+default_title = "Prest ⚡ Lightning-Fast To-Do Lists"
+
 # Create your views here.
 def home_page(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'title': default_title})
 
 def view_list(request, list_id):
     list_ = List.objects.get(id=list_id)
-    return render(request, 'list.html', {'list': list_})
+    return render(request, 'list.html', {'list': list_, 'title': list_.title})
 
 def new_list(request):
     list_ = List.objects.create()

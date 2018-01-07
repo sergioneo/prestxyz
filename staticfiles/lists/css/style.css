@@ -17,6 +17,10 @@ input[type=checkbox]:checked + label {text-decoration: line-through; color: rgba
 
 /* END */
 
+div {
+	box-sizing: border-box;
+}
+
 body {
 	width: 100%;
 	background-position: center center;
